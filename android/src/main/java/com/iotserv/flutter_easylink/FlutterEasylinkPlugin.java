@@ -31,19 +31,15 @@ public class FlutterEasylinkPlugin implements FlutterPlugin, MethodCallHandler {
   private String bssid;
   private String password = null;
   private int timeout = 60;//miao
-  private FlutterPluginBinding flutterPluginBinding;
+  private FlutterPluginBinding myFlutterPluginBinding;
   private MethodChannel channel;
   EasylinkP2P elp2p;
 
-  public FlutterEasylinkPlugin(FlutterPluginBinding flutterPluginBinding,MethodChannel channel) {
-    this.flutterPluginBinding = flutterPluginBinding;
-    this.channel = channel;
-  }
-
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+    myFlutterPluginBinding = flutterPluginBinding;
     channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_easylink");
-    channel.setMethodCallHandler(new FlutterEasylinkPlugin(flutterPluginBinding,channel));
+    channel.setMethodCallHandler(this);
   }
 
   @Override
@@ -61,7 +57,7 @@ public class FlutterEasylinkPlugin implements FlutterPlugin, MethodCallHandler {
         e.printStackTrace();
         timeout = 30;
       }
-      elp2p = new EasylinkP2P(flutterPluginBinding.getApplicationContext());
+      elp2p = new EasylinkP2P(myFlutterPluginBinding.getApplicationContext());
 
       EasyLinkParams elp = new EasyLinkParams();
       elp.ssid = ssid;
