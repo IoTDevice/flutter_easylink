@@ -47,7 +47,7 @@ public class FlutterEasylinkPlugin implements FlutterPlugin, MethodCallHandler {
   }
 
   @Override
-  public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
+  public void onMethodCall(@NonNull MethodCall call, @NonNull final Result result) {
     if (call.method.equals("getPlatformVersion")) {
       result.success("Android " + android.os.Build.VERSION.RELEASE);
     } else if (call.method.equals("start")){
