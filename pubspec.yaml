@@ -1,11 +1,11 @@
 name: flutter_easylink
 description: flutter_easylink for wifi smartconfig
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/OpenIoTHub
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.20.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.19.0"
 
 dependencies:
   flutter:
