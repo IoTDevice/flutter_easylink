@@ -1,3 +1,7 @@
+## 0.0.7
+
+* namespace
+
 ## 0.0.6+3
 
 * jcenter
